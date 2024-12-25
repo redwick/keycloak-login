@@ -1,5 +1,11 @@
 
 
-<button (click)="login()" [disabled]="kc.authenticated">LOGIN</button>
-<button (click)="logout()" [disabled]="!kc.authenticated">LOGOUT</button>
-<button (click)="load()" [disabled]="!kc.authenticated">LOAD USER</button>
+<button (click)="login()" [disabled]="authenticated">LOGIN</button>
+<button (click)="logout()" [disabled]="!authenticated">LOGOUT</button>
+@if(user){
+  <div>{{user.email}}</div>
+  <div>{{user.firstName}}</div>
+  <div>{{user.lastName}}</div>
+  <div>{{kc.hasRealmRole('demo-role')}}</div>
+  <div>{{kc.hasRealmRole('hidden-role')}}</div>
+}
