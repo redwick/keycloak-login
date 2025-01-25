@@ -9,3 +9,12 @@
   <div>{{kc.hasRealmRole('demo-role')}}</div>
   <div>{{kc.hasRealmRole('hidden-role')}}</div>
 }
+<!--<iframe src="https://chat-app.djarviss.ru"></iframe>-->
+<!--<iframe src="https://sso.djarviss.ru"></iframe>-->
+
+<button (click)="login()" [disabled]="authenticated">LOGIN</button>
+
+<div>
+  <button (click)="selectFilesCloud.click()">TEST CLOUD FILE UPLOAD</button>
+  <input hidden #selectFilesCloud type="file" (change)="handleFileInputCloudUpload(selectFilesCloud.files)">
+</div>

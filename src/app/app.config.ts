@@ -2,6 +2,7 @@ import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideKeycloak, withAutoRefreshToken, AutoRefreshTokenService, UserActivityService } from 'keycloak-angular';
 import { routes } from './app.routes';
+import {provideHttpClient} from '@angular/common/http';
 
 export const provideKeycloakAngular = () =>
   provideKeycloak({
@@ -13,6 +14,7 @@ export const provideKeycloakAngular = () =>
     initOptions: {
       onLoad: 'check-sso',
       checkLoginIframe: false,
+      //silentCheckSsoRedirectUri: window.location.origin + '/sso.html'
     },
     features: [
       withAutoRefreshToken({
@@ -30,6 +32,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideKeycloakAngular(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes)
+    provideRouter(routes),
+    provideHttpClient()
   ]
 };
